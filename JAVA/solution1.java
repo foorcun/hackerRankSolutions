@@ -19,34 +19,37 @@ class Result {
      */
 
     public static void plusMinus(List<Integer> arr) {
-    // Write your code here
-    
-    Map<String,Integer> hM = new HashMap<>();
-    DecimalFormat decimalFormat = new DecimalFormat("#.######");
-    
-    hM.put("p",0);
-    hM.put("n",0);
-    hM.put("z",0);
-    for(Integer i : arr){
-        if(i>0){
-           hM.put("p",hM.getOrDefault("p",0)+1);
-        }else if(i<0){
-            hM.put("n",hM.getOrDefault("n",0)+1);
-        }else{
-            hM.put("z",hM.getOrDefault("z",0)+1);
-            
+        // Write your code here
+
+        Map<String, Integer> hM = new HashMap<>();
+        DecimalFormat decimalFormat = new DecimalFormat("#.######");
+
+        hM.put("p", 0);
+        hM.put("n", 0);
+        hM.put("z", 0);
+        for (Integer i : arr) {
+            if (i > 0) {
+                hM.put("p", hM.getOrDefault("p", 0) + 1);
+            } else if (i < 0) {
+                hM.put("n", hM.getOrDefault("n", 0) + 1);
+            } else {
+                hM.put("z", hM.getOrDefault("z", 0) + 1);
+
+            }
         }
-    }
-    //System.out.println((double)hM.get("p")/arr.size());
-    
-    // calculation
-    
-    String p = decimalFormat.format((double)hM.get("p")/arr.size());
-    String n = decimalFormat.format((double)hM.get("n")/arr.size());
-    String z = decimalFormat.format((double)hM.get("z")/arr.size());
-    System.out.println(p);
-    System.out.println(n);
-    System.out.println(z);
+        // System.out.println((double)hM.get("p")/arr.size());
+
+        // calculation
+
+        double p = (double) hM.get("p") / arr.size();
+        String n = decimalFormat.format((double) hM.get("n") / arr.size());
+        String z = decimalFormat.format((double) hM.get("z") / arr.size());
+
+        // double dd = Double.parseDouble(z);
+
+        System.out.printf("%1.6f\n", p);
+        System.out.println(n);
+        System.out.println(z);
 
     }
 
@@ -59,8 +62,8 @@ public class Solution {
         int n = Integer.parseInt(bufferedReader.readLine().trim());
 
         List<Integer> arr = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
-            .map(Integer::parseInt)
-            .collect(toList());
+                .map(Integer::parseInt)
+                .collect(toList());
 
         Result.plusMinus(arr);
 
